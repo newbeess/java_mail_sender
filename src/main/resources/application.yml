@@ -1,0 +1,22 @@
+server:
+  servlet:
+    context-path: /java/mail/sender/
+
+spring:
+  mail:
+    username: email_address
+    password: email_pwd
+    host: host
+    port: 465
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+          port: ${spring.mail.port}
+          auth: true
+          starttls:
+            enable: true
+            required: true
