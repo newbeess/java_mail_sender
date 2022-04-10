@@ -31,8 +31,4 @@ jobs:
         with:
           java-version: 8
     
-      # package jar
-      - name: Build project with Maven
-        run: mvn -B package --file pom.xml
-
 
