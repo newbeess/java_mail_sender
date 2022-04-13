@@ -30,6 +30,16 @@ jobs:
         distribution: 'adopt'
     # build jar
     - run: mvn --batch-mode --update-snapshots verify
+    # copy file to server
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        source: "target/*.jar"
+        target: "/home/butch/action/"
+        
     # copy jar to staging dir
     - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v2
